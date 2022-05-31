@@ -2,6 +2,7 @@ package org.sample.dummy.handler;
 
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
+import io.vertx.core.parsetools.RecordParser;
 
 public class DummyHandler implements Handler<Buffer> {
   @Override

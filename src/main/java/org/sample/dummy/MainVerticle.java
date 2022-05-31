@@ -3,6 +3,9 @@ package org.sample.dummy;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 
+/**
+ * Not used. Ignore!
+ */
 public class MainVerticle extends AbstractVerticle {
 
   @Override

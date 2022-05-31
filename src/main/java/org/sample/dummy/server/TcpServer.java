@@ -2,9 +2,14 @@ package org.sample.dummy.server;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.net.NetServer;
+import io.vertx.core.parsetools.RecordParser;
 import org.sample.dummy.handler.DummyHandler;
 import org.sample.dummy.handler.LoggerHandler;
 
+/**
+ * Basic tcp server to test the behavior of handle method
+ *
+ */
 public class TcpServer {
   public static void main(String[] args) {
     Vertx vertx = Vertx.vertx();
@@ -14,6 +19,9 @@ public class TcpServer {
     server.connectHandler(netSocket -> {
       netSocket.handler(new DummyHandler());
       netSocket.closeHandler(new LoggerHandler());
+    });
+    RecordParser recordParser = RecordParser.newDelimited("<<EOM>>", data -> {
+      System.out.printf("Received data: %s\n", data.toString());
     });
 
     //Start server
